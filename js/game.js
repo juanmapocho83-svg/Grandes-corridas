@@ -86,7 +86,7 @@
       this.cars.push(car);
     }
     this.bestKey = 'gc_best_' + this.track.def.id + '_' + cat.id;
-    this.record = parseFloat(localStorage.getItem(this.bestKey)) || null;
+    this.record = parseFloat(GC.store.get(this.bestKey)) || null;
     this.makeProfile();
     this.makeMinimap();
   }
@@ -148,7 +148,7 @@
           c.last = this.time - c.lapStart; c.lapStart = this.time;
           if (c.best == null || c.last < c.best) c.best = c.last;
           if (c.isPlayer) {
-            if (!this.record || c.last < this.record) { this.record = c.last; localStorage.setItem(this.bestKey, c.last.toFixed(3)); this.say('RECORD ' + fmtTime(c.last), 2.5); }
+            if (!this.record || c.last < this.record) { this.record = c.last; GC.store.set(this.bestKey, c.last.toFixed(3)); this.say('RECORD ' + fmtTime(c.last), 2.5); }
             else this.say('VUELTA ' + fmtTime(c.last), 2);
           }
         }
@@ -197,14 +197,14 @@
   };
 
   Race.prototype.hit = function (f) {
-    this.shake = Math.max(this.shake, f);
+    if (!GC.reduceMotion) this.shake = Math.max(this.shake, f);
     if (this.hitCd <= 0) { GC.audio.thud(); this.hitCd = 0.3; if (navigator.vibrate) try { navigator.vibrate(40); } catch (e) { } }
   };
 
   Race.prototype.updateWeather = function (dt) {
     var ws = this.ws;
     this.gust = Math.sin(this.time * 0.7) * Math.sin(this.time * 0.23 + 1) * 1.6;
-    if (ws.lightning > 0.5 && Math.random() < dt * 0.12) { this.flash = 1; GC.audio.thunder(); }
+    if (ws.lightning > 0.5 && Math.random() < dt * 0.12) { this.flash = GC.reduceMotion ? 0.25 : 1; GC.audio.thunder(); }
     if (!this.variable) return;
     if ((this.wNext -= dt) <= 0) {
       var opts = [0, 1, 2, 3, 1, 2], nw;

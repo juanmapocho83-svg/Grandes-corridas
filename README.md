@@ -4,13 +4,10 @@ Juego de carreras en tercera persona con estética pixel art, jugable en celular
 
 ## Cómo jugar
 
-Abrí `index.html` en un navegador, o servilo con cualquier servidor estático:
+- **En la computadora:** abrí `index.html` en el navegador, o servilo con cualquier servidor estático (`python3 -m http.server 8000` y entrá a `http://localhost:8000`).
+- **En el celular (enlace permanente):** activá GitHub Pages en este repositorio: *Settings → Pages → Build and deployment → Source: Deploy from a branch*, elegí la rama y la carpeta `/ (root)` y guardá. En un par de minutos queda publicado en `https://<usuario>.github.io/<repositorio>/`.
 
-```
-python3 -m http.server 8000
-```
-
-y entrá a `http://localhost:8000`. También funciona publicado en GitHub Pages.
+Conviene jugar con el celular en horizontal.
 
 ## Qué incluye
 
@@ -26,7 +23,7 @@ y entrá a `http://localhost:8000`. También funciona publicado en GitHub Pages.
 
 | Acción | Teclado | Celular | Mando |
 |---|---|---|---|
-| Dirección | ← → / A D | ◀ ▶ | Stick izquierdo |
+| Dirección | ← → / A D | Panel ◀ ▶ (deslizá el pulgar: más lejos del centro, más gira) | Stick izquierdo |
 | Acelerador | ↑ / W | GAS | RT |
 | Freno | ↓ / S / Espacio | FRENO | LT |
 | Subir / bajar marcha | E o X / Q o Z | ▲ ▼ | A o RB / X o LB |

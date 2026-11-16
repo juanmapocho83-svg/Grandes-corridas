@@ -4,6 +4,14 @@ window.GC = window.GC || {};
   'use strict';
 
   GC.SEG = 5;      // largo de cada segmento de pista (m)
+
+  // Guardado local tolerante a fallos (modo privado, marcos incrustados, etc.)
+  GC.store = {
+    get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) { } },
+    del: function (k) { try { window.localStorage.removeItem(k); } catch (e) { } }
+  };
+  GC.reduceMotion = false;
   GC.G = 9.81;
 
   // top: km/h · acc: aceleración máx. en 1ª (m/s²) · mu: agarre · df: carga aerodinámica
