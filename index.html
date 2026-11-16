@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d1a">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Grandes Corridas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="c" width="356" height="200"></canvas>
+
+<div id="touch" class="hidden">
+  <button class="tb" id="bLeft" data-k="left">◀</button>
+  <button class="tb" id="bRight" data-k="right">▶</button>
+  <button class="tb" id="bClutch" data-k="clutch">EMB</button>
+  <button class="tb" id="bDown" data-k="down">▼</button>
+  <button class="tb" id="bUp" data-k="up">▲</button>
+  <button class="tb" id="bBrake" data-k="brake">FRENO</button>
+  <button class="tb" id="bGas" data-k="gas">GAS</button>
+</div>
+<button id="bPause" class="hidden">II</button>
+
+<section id="sMenu" class="screen">
+  <h1>GRANDES<br><span>CORRIDAS</span></h1>
+  <p class="sub">Carreras pixel · autos y motos</p>
+  <div class="col">
+    <button data-act="quick">Carrera rápida</button>
+    <button data-act="champ">Campeonato</button>
+    <button data-act="help">Controles</button>
+    <button data-act="sound" id="btnSound">Sonido: sí</button>
+    <button data-act="full">Pantalla completa</button>
+  </div>
+</section>
+
+<section id="sSetup" class="screen hidden">
+  <h2 id="setupTitle">Carrera rápida</h2>
+  <div class="setup">
+    <div class="rows" id="rows"></div>
+    <div class="preview">
+      <canvas id="pvCar" width="50" height="30"></canvas>
+      <div id="pvStats"></div>
+      <canvas id="pvTrack" width="64" height="64"></canvas>
+      <div id="pvInfo"></div>
+    </div>
+  </div>
+  <div class="rowbtn">
+    <button data-act="back">Volver</button>
+    <button data-act="go" class="primary">¡A correr!</button>
+  </div>
+</section>
+
+<section id="sResults" class="screen hidden">
+  <h2 id="resTitle">Resultados</h2>
+  <div class="tablewrap"><table id="resTable"></table></div>
+  <div class="rowbtn" id="resBtns"></div>
+</section>
+
+<section id="sPause" class="screen hidden">
+  <h2>Pausa</h2>
+  <div class="col">
+    <button data-act="resume" class="primary">Continuar</button>
+    <button data-act="restart">Reiniciar carrera</button>
+    <button data-act="quit">Salir al menú</button>
+  </div>
+</section>
+
+<section id="sHelp" class="screen hidden">
+  <h2>Controles</h2>
+  <div class="help">
+    <p><b>Teclado</b><br>
+    ← → / A D: dirección<br>↑ / W: acelerador<br>↓ / S / Espacio: freno<br>
+    E o X: subir marcha · Q o Z: bajar marcha<br>Shift o C: embrague<br>P / Esc: pausa</p>
+    <p><b>Celular</b><br>Botones en pantalla: ◀ ▶ dirección, GAS, FRENO, ▲ ▼ marchas y EMB (embrague) si los habilitás.</p>
+    <p><b>Mando</b><br>Stick izq.: dirección · RT gas · LT freno · A/RB subir · X/LB bajar · B embrague</p>
+    <p><b>Transmisión</b><br>Automática, manual secuencial o manual con embrague (arrancás en punto muerto: pisá embrague, subí a 1ª, acelerá y soltá).</p>
+    <p><b>Clima</b><br>La lluvia, la nieve y la niebla cambian el agarre y la visibilidad. Elegí bien los neumáticos.</p>
+  </div>
+  <div class="rowbtn"><button data-act="back">Volver</button></div>
+</section>
+
+<script src="js/data.js"></script>
+<script src="js/track.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
